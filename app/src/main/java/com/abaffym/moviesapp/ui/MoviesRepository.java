@@ -54,14 +54,7 @@ public class MoviesRepository {
 	}
 
 	public Single<List<Movie>> getAllMovies() {
-		return Single.concat(getChachedMovies(), getRemoteMovies())
-				.filter(new Predicate<List<Movie>>() {
-					@Override
-					public boolean test(List<Movie> movies) {
-						return !movies.isEmpty();
-					}
-				})
-				.firstOrError()
+		return getRemoteMovies()
 				.subscribeOn(Schedulers.io())
 				.doOnSuccess(new Consumer<List<Movie>>() {
 					@Override
