@@ -3,11 +3,6 @@ package com.abaffym.moviesapp.ui.explore;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
-
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
-
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,12 +11,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.abaffym.moviesapp.R;
-
 import com.abaffym.moviesapp.model.Movie;
 
 import java.util.List;
+
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
 public class ExploreFragment extends Fragment {
 
@@ -53,9 +52,8 @@ public class ExploreFragment extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_explore, container, false);
 
 		// Set the adapter
-		Context context = view.getContext();
 		recyclerView = view.findViewById(R.id.list);
-		recyclerView.setLayoutManager(new GridLayoutManager(context, 2));
+		recyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 2));
 		adapter = new ExploreAdapter(onMovieClickedListener);
 		recyclerView.setAdapter(adapter);
 		return view;
@@ -68,6 +66,11 @@ public class ExploreFragment extends Fragment {
 			@Override
 			public void accept(List<Movie> movies) {
 				adapter.setMovies(movies);
+			}
+		}, new Consumer<Throwable>() {
+			@Override
+			public void accept(Throwable throwable) {
+				Toast.makeText(getContext(),"Could not fetch data.", Toast.LENGTH_SHORT).show();
 			}
 		});
 		compositeDisposable.add(disposable);

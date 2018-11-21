@@ -1,11 +1,11 @@
 package com.abaffym.moviesapp.ui;
 
+import com.abaffym.moviesapp.data.local.MoviesLocalDataSource;
+import com.abaffym.moviesapp.data.remote.entity.MovieEntity;
 import com.abaffym.moviesapp.data.remote.rest.DiscoverMoviesResponse;
 import com.abaffym.moviesapp.data.remote.rest.MovieMapper;
 import com.abaffym.moviesapp.data.remote.rest.MoviesApi;
 import com.abaffym.moviesapp.di.NetworkModule;
-import com.abaffym.moviesapp.data.remote.entity.MovieEntity;
-import com.abaffym.moviesapp.data.local.MoviesLocalDataSource;
 import com.abaffym.moviesapp.model.Movie;
 
 import java.util.ArrayList;
@@ -50,18 +50,24 @@ public class MoviesRepository {
 						}
 						return movies;
 					}
-				});
-	}
-
-	public Single<List<Movie>> getAllMovies() {
-		return getRemoteMovies()
-				.subscribeOn(Schedulers.io())
-				.doOnSuccess(new Consumer<List<Movie>>() {
+				}).doOnSuccess(new Consumer<List<Movie>>() {
 					@Override
 					public void accept(List<Movie> movies) {
 						storeInLocalCache(movies);
 					}
+				});
+	}
+
+	public Single<List<Movie>> getAllMovies() {
+		return Single.concat(getChachedMovies(), getRemoteMovies())
+				.filter(new Predicate<List<Movie>>() {
+					@Override
+					public boolean test(List<Movie> movies) {
+						return !movies.isEmpty();
+					}
 				})
+				.firstOrError()
+				.subscribeOn(Schedulers.io())
 				.observeOn(AndroidSchedulers.mainThread());
 	}
 
