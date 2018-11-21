@@ -1,0 +1,20 @@
+<resources>
+
+	<!-- App label -->
+	<string name="app_name">Movies App</string>
+
+	<!-- Activity labels -->
+	<string name="activity_label_movie_detail">Movie Detail</string>
+
+	<!-- Tab labels -->
+	<string name="tab_label_explore">Explore</string>
+	<string name="tab_label_favorites">Favorites</string>
+
+	<!-- MovieEntity detail screen -->
+	<string name="movie_detail_format_release_date">Release date: %s</string>
+
+	<!-- Toast messages -->
+	<string name="message_added_to_favorites">Added to favorites</string>
+	<string name="message_removed_from_favorites">Removed from favorites</string>
+
+</resources>
