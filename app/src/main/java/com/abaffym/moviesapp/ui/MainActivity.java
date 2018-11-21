@@ -1,9 +1,9 @@
 package com.abaffym.moviesapp.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 import com.abaffym.moviesapp.R;
 import com.abaffym.moviesapp.model.Movie;
@@ -11,7 +11,6 @@ import com.abaffym.moviesapp.ui.detail.MovieDetailActivity;
 import com.abaffym.moviesapp.ui.explore.ExploreAdapter;
 import com.abaffym.moviesapp.ui.explore.ExploreFragment;
 import com.abaffym.moviesapp.ui.favorites.FavoritesFragment;
-import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity implements ExploreAdapter.OnMovieClickedListener {
 

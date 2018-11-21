@@ -1,9 +1,9 @@
 package com.abaffym.moviesapp.ui.detail;
 
+import android.arch.lifecycle.ViewModel;
+
 import com.abaffym.moviesapp.model.Movie;
 import com.abaffym.moviesapp.ui.MoviesRepository;
-
-import androidx.lifecycle.ViewModel;
 
 public class MovieDetailViewModel extends ViewModel {
 

@@ -1,14 +1,14 @@
 package com.abaffym.moviesapp.ui.detail;
 
-import androidx.core.content.ContextCompat;
-import androidx.lifecycle.ViewModelProviders;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +20,6 @@ import com.abaffym.moviesapp.R;
 import com.abaffym.moviesapp.model.Movie;
 import com.abaffym.moviesapp.utils.DateUtils;
 import com.bumptech.glide.Glide;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MovieDetailFragment extends Fragment {
 
