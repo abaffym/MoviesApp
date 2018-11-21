@@ -7,11 +7,11 @@
 	android:orientation="vertical"
 	android:fitsSystemWindows="true">
 
-	<com.google.android.material.appbar.AppBarLayout
+	<android.support.design.widget.AppBarLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content">
 
-		<androidx.appcompat.widget.Toolbar
+		<android.support.v7.widget.Toolbar
 			android:id="@+id/toolbar"
 			android:layout_width="match_parent"
 			android:layout_height="?attr/actionBarSize"
@@ -20,25 +20,25 @@
 			app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
 			app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-		<com.google.android.material.tabs.TabLayout
+		<android.support.design.widget.TabLayout
 			android:id="@+id/tab_layout"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-			<com.google.android.material.tabs.TabItem
+			<android.support.design.widget.TabItem
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="@string/tab_label_explore" />
 
-			<com.google.android.material.tabs.TabItem
+			<android.support.design.widget.TabItem
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="@string/tab_label_favorites" />
 
-		</com.google.android.material.tabs.TabLayout>
+		</android.support.design.widget.TabLayout>
 
-	</com.google.android.material.appbar.AppBarLayout>
+	</android.support.design.widget.AppBarLayout>
 
 	<FrameLayout
 		android:id="@+id/fragment_container"

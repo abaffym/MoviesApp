@@ -16,13 +16,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 
 import com.abaffym.moviesapp.R;
 
 import com.abaffym.moviesapp.model.Movie;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ExploreFragment extends Fragment {
@@ -36,8 +34,6 @@ public class ExploreFragment extends Fragment {
 	private CompositeDisposable compositeDisposable;
 
 	private RecyclerView recyclerView;
-
-	private ProgressBar progressBar;
 
 	public ExploreFragment() {
 	}
@@ -62,10 +58,6 @@ public class ExploreFragment extends Fragment {
 		recyclerView.setLayoutManager(new GridLayoutManager(context, 2));
 		adapter = new ExploreAdapter(onMovieClickedListener);
 		recyclerView.setAdapter(adapter);
-
-		progressBar = view.findViewById(R.id.progress);
-		progressBar.setVisibility(View.VISIBLE);
-		recyclerView.setVisibility(View.GONE);
 		return view;
 	}
 
@@ -75,8 +67,6 @@ public class ExploreFragment extends Fragment {
 		Disposable disposable = viewModel.getAllMovies().subscribe(new Consumer<List<Movie>>() {
 			@Override
 			public void accept(List<Movie> movies) {
-				progressBar.setVisibility(View.GONE);
-				recyclerView.setVisibility(View.VISIBLE);
 				adapter.setMovies(movies);
 			}
 		});
