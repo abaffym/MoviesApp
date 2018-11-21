@@ -100,7 +100,5 @@ public class ExploreFragment extends Fragment {
 		super.onDetach();
 		compositeDisposable.dispose();
 		onMovieClickedListener = null;
-
-		MoviesLocalDataSource.setCachedMovies(new ArrayList<Movie>());
 	}
 }
