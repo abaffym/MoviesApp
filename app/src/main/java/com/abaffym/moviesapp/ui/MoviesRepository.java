@@ -2,7 +2,7 @@ package com.abaffym.moviesapp.ui;
 
 import com.abaffym.moviesapp.data.local.MoviesLocalDataSource;
 import com.abaffym.moviesapp.data.remote.entity.MovieEntity;
-import com.abaffym.moviesapp.data.remote.rest.DiscoverMoviesResponse;
+import com.abaffym.moviesapp.data.remote.entity.DiscoverMoviesResponse;
 import com.abaffym.moviesapp.data.remote.rest.MovieMapper;
 import com.abaffym.moviesapp.data.remote.rest.MoviesApi;
 import com.abaffym.moviesapp.di.NetworkModule;

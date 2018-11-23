@@ -1,4 +1,4 @@
-package com.abaffym.moviesapp.data.remote.rest;
+package com.abaffym.moviesapp.data.remote.entity;
 
 import com.squareup.moshi.Json;
 
