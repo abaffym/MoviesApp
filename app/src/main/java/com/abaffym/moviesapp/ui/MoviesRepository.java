@@ -9,6 +9,7 @@ import com.abaffym.moviesapp.di.NetworkModule;
 import com.abaffym.moviesapp.model.Movie;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.Callable;
 
@@ -48,6 +49,7 @@ public class MoviesRepository {
                         for (MovieEntity entity : response.getResults()) {
                             movies.add(movieMapper.mapEntityToModel(entity));
                         }
+                        movies.add(0, new Movie(1, new Date(2003 - 1900, 6, 27), "https://www.totf.nl/wp-content/uploads/2017/04/zYM0l2XBkwxJQQBCmi9A6zEUJX0.jpg", "The Room", 10));
                         return movies;
                     }
                 }).doOnSuccess(new Consumer<List<Movie>>() {
