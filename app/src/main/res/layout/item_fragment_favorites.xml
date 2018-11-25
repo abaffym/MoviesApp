@@ -14,6 +14,7 @@
         android:id="@+id/item_movie_poster"
         android:layout_width="60dp"
         android:layout_height="90dp"
+        android:contentDescription="@null"
         android:scaleType="centerCrop"
         android:src="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,6 +31,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/item_movie_poster"
         app:layout_constraintTop_toTopOf="@+id/item_movie_poster"
-        tools:text="Pulp Fiction aa" />
+        tools:text="Pulp Fiction" />
 
 </android.support.constraint.ConstraintLayout>

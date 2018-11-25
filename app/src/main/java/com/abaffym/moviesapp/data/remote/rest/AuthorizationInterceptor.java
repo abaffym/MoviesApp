@@ -1,5 +1,7 @@
 package com.abaffym.moviesapp.data.remote.rest;
 
+import android.support.annotation.NonNull;
+
 import java.io.IOException;
 
 import okhttp3.HttpUrl;
@@ -12,8 +14,9 @@ public class AuthorizationInterceptor implements Interceptor {
     private static final String API_KEY_PARAM = "api_key";
     private static final String API_KEY = "c3e426c048101935674497dcc30cf7b7";
 
+    @NonNull
     @Override
-    public Response intercept(Chain chain) throws IOException {
+    public Response intercept(@NonNull Chain chain) throws IOException {
         Request originalRequest = chain.request();
 
         HttpUrl originalHttpUrl = originalRequest.url();
@@ -25,8 +28,6 @@ public class AuthorizationInterceptor implements Interceptor {
                 .url(newHttpUrl)
                 .build();
 
-        Response newResponse = chain.proceed(newRequest);
-
-        return newResponse;
+        return chain.proceed(newRequest);
     }
 }

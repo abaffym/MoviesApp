@@ -98,7 +98,7 @@ public class MovieDetailFragment extends Fragment {
 
     private void setFabIcon() {
         FloatingActionButton fab = requireActivity().findViewById(R.id.detail_fab);
-        if (!viewModel.isFavorite()) {
+        if (viewModel.isFavorite()) {
             fab.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_like_white_24dp));
         } else {
             fab.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_dislike_white_24dp));

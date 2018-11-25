@@ -1,5 +1,7 @@
 package com.abaffym.moviesapp.model;
 
+import android.support.annotation.NonNull;
+
 import java.util.Date;
 import java.util.Objects;
 
@@ -60,6 +62,7 @@ public class Movie {
         return Objects.hash(id, releaseDate, posterPath, title, averageVote);
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Movie{" +

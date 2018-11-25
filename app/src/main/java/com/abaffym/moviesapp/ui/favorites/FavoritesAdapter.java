@@ -1,5 +1,6 @@
 package com.abaffym.moviesapp.ui.favorites;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,15 +28,16 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
         notifyDataSetChanged();
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_fragment_favorites, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         final Movie movie = movies.get(position);
 
         holder.movieTitle.setText(String.valueOf(movies.get(position).getTitle()));

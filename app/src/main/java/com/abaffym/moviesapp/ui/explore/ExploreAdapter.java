@@ -1,6 +1,7 @@
 package com.abaffym.moviesapp.ui.explore;
 
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,15 +34,16 @@ public class ExploreAdapter extends RecyclerView.Adapter<ExploreAdapter.ViewHold
         notifyDataSetChanged();
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_fragment_explore, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final ExploreAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ExploreAdapter.ViewHolder holder, int position) {
         final Movie movie = movies.get(position);
 
         Glide.with(holder.view)
