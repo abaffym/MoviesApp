@@ -26,7 +26,7 @@ public class MoviesRepository {
     private MovieMapper movieMapper;
 
     public MoviesRepository() {
-        moviesApi = NetworkModule.moviesApi();
+        moviesApi = NetworkModule.INSTANCE.moviesApi();
         movieMapper = new MovieMapper();
     }
 
