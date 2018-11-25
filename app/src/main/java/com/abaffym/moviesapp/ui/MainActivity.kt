@@ -4,15 +4,13 @@ import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-
 import com.abaffym.moviesapp.R
+import com.abaffym.moviesapp.extension.onTabSelected
 import com.abaffym.moviesapp.model.Movie
 import com.abaffym.moviesapp.ui.detail.MovieDetailActivity
 import com.abaffym.moviesapp.ui.explore.ExploreAdapter
 import com.abaffym.moviesapp.ui.explore.ExploreFragment
 import com.abaffym.moviesapp.ui.favorites.FavoritesFragment
-import com.abaffym.moviesapp.extension.onTabSelected
-
 
 private const val TAB_POSITION_EXPLORE = 0
 private const val TAB_POSITION_FAVORITE = 1
@@ -67,7 +65,6 @@ class MainActivity : AppCompatActivity(), ExploreAdapter.OnMovieClickedListener 
                     .replace(R.id.fragment_container, favoritesFragment, FRAGMENT_TAG_FAVORITES)
                     .commit()
             else -> throw IllegalArgumentException("Invalid tab position: $position")
-
         }
 
     }
