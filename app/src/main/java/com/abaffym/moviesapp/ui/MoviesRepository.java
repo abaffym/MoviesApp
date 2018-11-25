@@ -34,7 +34,7 @@ public class MoviesRepository {
         return Single.fromCallable(new Callable<List<Movie>>() {
             @Override
             public List<Movie> call() {
-                return MoviesLocalDataSource.getCachedMovies();
+                return MoviesLocalDataSource.INSTANCE.getCachedMovies();
             }
         });
     }
@@ -75,7 +75,7 @@ public class MoviesRepository {
         return Single.fromCallable(new Callable<List<Movie>>() {
             @Override
             public List<Movie> call() {
-                return MoviesLocalDataSource.getFavoriteMovies();
+                return MoviesLocalDataSource.INSTANCE.getFavoriteMovies();
             }
         })
                 .subscribeOn(Schedulers.io())
@@ -83,7 +83,7 @@ public class MoviesRepository {
     }
 
     public Movie getMovieById(long id) {
-        for (Movie movie : MoviesLocalDataSource.getCachedMovies()) {
+        for (Movie movie : MoviesLocalDataSource.INSTANCE.getCachedMovies()) {
             if (movie.getId() == id) {
                 return movie;
             }
@@ -92,18 +92,18 @@ public class MoviesRepository {
     }
 
     public boolean isFavorite(long movieId) {
-        return MoviesLocalDataSource.isFavorite(movieId);
+        return MoviesLocalDataSource.INSTANCE.isFavorite(movieId);
     }
 
     public void addToFavorites(long movieId) {
-        MoviesLocalDataSource.addFavoriteMovie(movieId);
+        MoviesLocalDataSource.INSTANCE.addFavoriteMovie(movieId);
     }
 
     public void removeFromFavorites(Long movieId) {
-        MoviesLocalDataSource.removeFavoriteMovie(movieId);
+        MoviesLocalDataSource.INSTANCE.removeFavoriteMovie(movieId);
     }
 
     private void storeInLocalCache(List<Movie> movies) {
-        MoviesLocalDataSource.setCachedMovies(movies);
+        MoviesLocalDataSource.INSTANCE.setCachedMovies(movies);
     }
 }
