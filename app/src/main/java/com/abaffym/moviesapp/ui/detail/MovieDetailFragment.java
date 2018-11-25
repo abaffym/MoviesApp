@@ -64,7 +64,7 @@ public class MovieDetailFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (viewModel.isFavorite()) {
+                if (!viewModel.isFavorite()) {
                     viewModel.addToFavorites();
                     Toast.makeText(requireContext(), R.string.message_added_to_favorites, Toast.LENGTH_SHORT).show();
                 } else {
@@ -98,7 +98,7 @@ public class MovieDetailFragment extends Fragment {
 
     private void setFabIcon() {
         FloatingActionButton fab = requireActivity().findViewById(R.id.detail_fab);
-        if (viewModel.isFavorite()) {
+        if (!viewModel.isFavorite()) {
             fab.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_like_white_24dp));
         } else {
             fab.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_dislike_white_24dp));
