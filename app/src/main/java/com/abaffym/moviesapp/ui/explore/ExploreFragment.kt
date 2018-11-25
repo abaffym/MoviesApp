@@ -25,7 +25,7 @@ class ExploreFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
 
-    private val compositeDisposable = CompositeDisposable()
+    private lateinit var compositeDisposable : CompositeDisposable
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +59,7 @@ class ExploreFragment : Fragment() {
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
+        compositeDisposable = CompositeDisposable()
         if (context is ExploreAdapter.OnMovieClickedListener) {
             onMovieClickedListener = context
         } else {

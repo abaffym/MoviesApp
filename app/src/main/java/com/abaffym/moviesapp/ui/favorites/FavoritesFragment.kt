@@ -1,6 +1,7 @@
 package com.abaffym.moviesapp.ui.favorites
 
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -18,7 +19,7 @@ class FavoritesFragment : Fragment() {
 
     private lateinit var favoritesAdapter: FavoritesAdapter
 
-    private var compositeDisposable = CompositeDisposable()
+    private lateinit var compositeDisposable : CompositeDisposable
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +46,10 @@ class FavoritesFragment : Fragment() {
                 .addTo(compositeDisposable)
     }
 
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        compositeDisposable = CompositeDisposable()
+    }
 
     override fun onDetach() {
         super.onDetach()
