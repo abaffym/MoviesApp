@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.abaffym.moviesapp.R
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 
 class FavoritesFragment : Fragment() {
 
@@ -32,15 +33,16 @@ class FavoritesFragment : Fragment() {
         favoritesAdapter = FavoritesAdapter()
         view.apply {
             layoutManager = LinearLayoutManager(context)
-            this.adapter = favoritesAdapter
+            adapter = favoritesAdapter
         }
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val disposable = viewModel.favoriteMovies.subscribe { movies -> favoritesAdapter.setMovies(movies) }
-        compositeDisposable.add(disposable)
+        viewModel.favoriteMovies
+                .subscribe(favoritesAdapter::setMovies)
+                .addTo(compositeDisposable)
     }
 
 
@@ -51,9 +53,7 @@ class FavoritesFragment : Fragment() {
 
     companion object {
 
-        fun newInstance(): FavoritesFragment {
-            return FavoritesFragment()
-        }
+        fun newInstance() = FavoritesFragment()
     }
 
 }
