@@ -64,7 +64,7 @@ public class MovieDetailFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!viewModel.isFavorite()) {
+                if (viewModel.isFavorite()) {
                     viewModel.addToFavorites();
                     Toast.makeText(requireContext(), R.string.message_added_to_favorites, Toast.LENGTH_SHORT).show();
                 } else {
