@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.abaffym.moviesapp.R;
 import com.abaffym.moviesapp.model.Movie;
-import com.abaffym.moviesapp.utils.DateUtilsKt;
+import com.abaffym.moviesapp.extension.DateExKt;
 import com.bumptech.glide.Glide;
 
 public class MovieDetailFragment extends Fragment {
@@ -83,7 +83,7 @@ public class MovieDetailFragment extends Fragment {
 
         TextView releaseDateTextView = requireActivity().findViewById(R.id.detail_movie_release_date);
         String releaseDate = getString(R.string.movie_detail_format_release_date,
-                DateUtilsKt.toSimpleString(movie.getReleaseDate()));
+                DateExKt.toSimpleString(movie.getReleaseDate()));
         releaseDateTextView.setText(releaseDate);
 
         TextView ratingTextView = requireActivity().findViewById(R.id.detail_movie_rating);

@@ -1,4 +1,4 @@
-package com.abaffym.moviesapp.utils
+package com.abaffym.moviesapp.extension
 
 import java.text.SimpleDateFormat
 import java.util.*
