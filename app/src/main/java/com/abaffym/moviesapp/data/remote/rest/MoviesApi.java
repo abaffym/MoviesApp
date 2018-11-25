@@ -8,7 +8,7 @@ import retrofit2.http.GET;
 
 public interface MoviesApi {
 
-	@GET("discover/movie")
-	Single<DiscoverMoviesResponse<MovieEntity>> discoverMovies();
+    @GET("discover/movie")
+    Single<DiscoverMoviesResponse<MovieEntity>> discoverMovies();
 
 }

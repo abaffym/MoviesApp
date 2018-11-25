@@ -11,13 +11,13 @@ import io.reactivex.Single;
 
 public class ExploreViewModel extends ViewModel {
 
-	private MoviesRepository movieRepository;
+    private MoviesRepository movieRepository;
 
-	public ExploreViewModel() {
-		this.movieRepository = new MoviesRepository();
-	}
+    public ExploreViewModel() {
+        this.movieRepository = new MoviesRepository();
+    }
 
-	public Single<List<Movie>> getAllMovies() {
-		return movieRepository.getAllMovies();
-	}
+    public Single<List<Movie>> getAllMovies() {
+        return movieRepository.getAllMovies();
+    }
 }

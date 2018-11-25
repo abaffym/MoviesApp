@@ -24,74 +24,74 @@ import io.reactivex.functions.Consumer;
 
 public class ExploreFragment extends Fragment {
 
-	private ExploreAdapter.OnMovieClickedListener onMovieClickedListener;
+    private ExploreAdapter.OnMovieClickedListener onMovieClickedListener;
 
-	private ExploreViewModel viewModel;
+    private ExploreViewModel viewModel;
 
-	private ExploreAdapter adapter;
+    private ExploreAdapter adapter;
 
-	private CompositeDisposable compositeDisposable;
+    private CompositeDisposable compositeDisposable;
 
-	private RecyclerView recyclerView;
+    private RecyclerView recyclerView;
 
-	public ExploreFragment() {
-	}
+    public ExploreFragment() {
+    }
 
-	public static ExploreFragment newInstance() {
-		return new ExploreFragment();
-	}
+    public static ExploreFragment newInstance() {
+        return new ExploreFragment();
+    }
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		viewModel = ViewModelProviders.of(this).get(ExploreViewModel.class);
-	}
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        viewModel = ViewModelProviders.of(this).get(ExploreViewModel.class);
+    }
 
-	@Override
-	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_explore, container, false);
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_explore, container, false);
 
-		// Set the adapter
-		recyclerView = view.findViewById(R.id.list);
-		recyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 2));
-		adapter = new ExploreAdapter(onMovieClickedListener);
-		recyclerView.setAdapter(adapter);
-		return view;
-	}
+        // Set the adapter
+        recyclerView = view.findViewById(R.id.list);
+        recyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 2));
+        adapter = new ExploreAdapter(onMovieClickedListener);
+        recyclerView.setAdapter(adapter);
+        return view;
+    }
 
-	@Override
-	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
-		Disposable disposable = viewModel.getAllMovies().subscribe(new Consumer<List<Movie>>() {
-			@Override
-			public void accept(List<Movie> movies) {
-				adapter.setMovies(movies);
-			}
-		}, new Consumer<Throwable>() {
-			@Override
-			public void accept(Throwable throwable) {
-				Toast.makeText(getContext(),"Could not fetch data.", Toast.LENGTH_SHORT).show();
-			}
-		});
-		compositeDisposable.add(disposable);
-	}
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Disposable disposable = viewModel.getAllMovies().subscribe(new Consumer<List<Movie>>() {
+            @Override
+            public void accept(List<Movie> movies) {
+                adapter.setMovies(movies);
+            }
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) {
+                Toast.makeText(getContext(), "Could not fetch data.", Toast.LENGTH_SHORT).show();
+            }
+        });
+        compositeDisposable.add(disposable);
+    }
 
-	@Override
-	public void onAttach(Context context) {
-		super.onAttach(context);
-		compositeDisposable = new CompositeDisposable();
-		if (context instanceof ExploreAdapter.OnMovieClickedListener) {
-			onMovieClickedListener = (ExploreAdapter.OnMovieClickedListener) context;
-		} else {
-			throw new RuntimeException(context.toString()
-					+ " must implement OnListFragmentInteractionListener");
-		}
-	}
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        compositeDisposable = new CompositeDisposable();
+        if (context instanceof ExploreAdapter.OnMovieClickedListener) {
+            onMovieClickedListener = (ExploreAdapter.OnMovieClickedListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnListFragmentInteractionListener");
+        }
+    }
 
-	@Override
-	public void onDetach() {
-		super.onDetach();
-		compositeDisposable.dispose();
-		onMovieClickedListener = null;
-	}
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        compositeDisposable.dispose();
+        onMovieClickedListener = null;
+    }
 }

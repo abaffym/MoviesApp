@@ -11,14 +11,14 @@ import io.reactivex.Single;
 
 public class FavoritesViewModel extends ViewModel {
 
-	private MoviesRepository movieRepository;
+    private MoviesRepository movieRepository;
 
-	public FavoritesViewModel() {
-		this.movieRepository = new MoviesRepository();
-	}
+    public FavoritesViewModel() {
+        this.movieRepository = new MoviesRepository();
+    }
 
-	public Single<List<Movie>> getFavoriteMovies() {
-		return movieRepository.getFavoriteMovies();
-	}
+    public Single<List<Movie>> getFavoriteMovies() {
+        return movieRepository.getFavoriteMovies();
+    }
 
 }

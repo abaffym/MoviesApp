@@ -7,31 +7,31 @@ import com.abaffym.moviesapp.ui.MoviesRepository;
 
 public class MovieDetailViewModel extends ViewModel {
 
-	private MoviesRepository moviesRepository;
+    private MoviesRepository moviesRepository;
 
-	public MovieDetailViewModel() {
-		moviesRepository = new MoviesRepository();
-	}
+    public MovieDetailViewModel() {
+        moviesRepository = new MoviesRepository();
+    }
 
-	private long movieId = -1;
+    private long movieId = -1;
 
-	public void setMovieId(long movieId) {
-		this.movieId = movieId;
-	}
+    public void setMovieId(long movieId) {
+        this.movieId = movieId;
+    }
 
-	public Movie getMovieDetail() {
-		return moviesRepository.getMovieById(movieId);
-	}
+    public Movie getMovieDetail() {
+        return moviesRepository.getMovieById(movieId);
+    }
 
-	public void addToFavorites() {
-		moviesRepository.addToFavorites(movieId);
-	}
+    public void addToFavorites() {
+        moviesRepository.addToFavorites(movieId);
+    }
 
-	public void removeFromFavorites() {
-		moviesRepository.removeFromFavorites(movieId);
-	}
+    public void removeFromFavorites() {
+        moviesRepository.removeFromFavorites(movieId);
+    }
 
-	public boolean isFavorite() {
-		return moviesRepository.isFavorite(movieId);
-	}
+    public boolean isFavorite() {
+        return moviesRepository.isFavorite(movieId);
+    }
 }

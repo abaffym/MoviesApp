@@ -16,63 +16,63 @@ import java.util.List;
 
 public class ExploreAdapter extends RecyclerView.Adapter<ExploreAdapter.ViewHolder> {
 
-	public interface OnMovieClickedListener {
-		void onMovieClicked(Movie item);
-	}
+    public interface OnMovieClickedListener {
+        void onMovieClicked(Movie item);
+    }
 
-	private final List<Movie> movies = new ArrayList<>();
-	private final OnMovieClickedListener onMovieClickedListener;
+    private final List<Movie> movies = new ArrayList<>();
+    private final OnMovieClickedListener onMovieClickedListener;
 
-	public ExploreAdapter(OnMovieClickedListener listener) {
-		onMovieClickedListener = listener;
-	}
+    public ExploreAdapter(OnMovieClickedListener listener) {
+        onMovieClickedListener = listener;
+    }
 
-	public void setMovies(List<Movie> items) {
-		movies.clear();
-		movies.addAll(items);
-		notifyDataSetChanged();
-	}
+    public void setMovies(List<Movie> items) {
+        movies.clear();
+        movies.addAll(items);
+        notifyDataSetChanged();
+    }
 
-	@Override
-	public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-		View view = LayoutInflater.from(parent.getContext())
-				.inflate(R.layout.item_fragment_explore, parent, false);
-		return new ViewHolder(view);
-	}
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_fragment_explore, parent, false);
+        return new ViewHolder(view);
+    }
 
-	@Override
-	public void onBindViewHolder(final ExploreAdapter.ViewHolder holder, int position) {
-		final Movie movie = movies.get(position);
+    @Override
+    public void onBindViewHolder(final ExploreAdapter.ViewHolder holder, int position) {
+        final Movie movie = movies.get(position);
 
-		Glide.with(holder.view)
-				.load(movie.getPosterPath())
-				.into(holder.moviePoster);
+        Glide.with(holder.view)
+                .load(movie.getPosterPath())
+                .into(holder.moviePoster);
 
-		holder.view.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (onMovieClickedListener != null) {
-					onMovieClickedListener.onMovieClicked(movie);
-				}
-			}
-		});
-	}
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onMovieClickedListener != null) {
+                    onMovieClickedListener.onMovieClicked(movie);
+                }
+            }
+        });
+    }
 
-	@Override
-	public int getItemCount() {
-		return movies.size();
-	}
+    @Override
+    public int getItemCount() {
+        return movies.size();
+    }
 
-	public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
-		public final View view;
-		public final ImageView moviePoster;
+        public final View view;
+        public final ImageView moviePoster;
 
-		public ViewHolder(View view) {
-			super(view);
-			this.view = view;
-			moviePoster = view.findViewById(R.id.item_movie_poster);
-		}
+        public ViewHolder(View view) {
+            super(view);
+            this.view = view;
+            moviePoster = view.findViewById(R.id.item_movie_poster);
+        }
 
-	}
+    }
 }
